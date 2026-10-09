@@ -1,13 +1,59 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crônicas de Lúmen — RPG Pixel Art</title>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<title>Crônicas de Lúmen — RPG Pixel Art</title>
 <link rel="stylesheet" href="css/style.css">
-</head><body><main class="app"><section class="frame"><header class="head"><div><div class="brand">✦ CRÔNICAS DE LÚMEN</div><div class="sub">A Floresta dos Sussurros · Capítulo I</div></div><span class="tag">RPG PIXEL ART · DEMO</span></header><canvas id="game" width="768" height="576" tabindex="0" aria-label="Jogo RPG. WASD ou setas para mover, E para interagir e espaço para iniciar combate por turnos."></canvas><div class="foot"><span>✦ Explore · Converse · Lute</span><span id="zone">FLORESTA · 01</span><span>SPRITES 256 × 256</span></div></section><aside class="side"><section class="panel"><h2>✧ AVENTUREIRA</h2><div class="hero"><canvas id="portrait" class="portrait" width="256" height="256"></canvas><div><strong>Yuu, Andarilha</strong><small>Nível <span id="level">1</span> · Maga errante</small><div class="gold">✦ <span id="coins">12</span> cristais</div></div></div><div class="stat"><div class="statline"><span>♥ Vitalidade</span><span id="hpText">100 / 100</span></div><div class="bar"><div id="hpBar" class="fill hp" style="width:100%"></div></div></div><div class="stat"><div class="statline"><span>✧ Experiência</span><span id="xpText">0 / 30</span></div><div class="bar"><div id="xpBar" class="fill xp" style="width:0%"></div></div></div><div class="buttons"><button id="potion">♥ Poção (1)</button><button id="attack">✦ Combater</button></div></section><section class="panel"><h2>✧ MISSÃO ATUAL</h2><div class="quest"><strong>O brilho perdido</strong><br>Encontre a guardiã Elara e derrote 3 slimes sombrios para recuperar os cristais da floresta.<br><br><span class="gold">Progresso:</span>
-<span id="progress">0 / 3 slimes</span><br><span id="questState">Objetivo: encontre Elara perto da pedra azul.</span></div><div id="dialog" class="dialog">Bem-vinda à Floresta dos Sussurros! Elara está perto da pedra azul.</div></section><section class="panel"><h2>✧ REGISTRO</h2><div id="log" class="log"><div>Você chegou à floresta.</div><div>Uma energia mágica pulsa no ar...</div></div><div class="controls"><div></div><div class="key"><b>W</b> / ↑</div><div></div><div class="key"><b>A</b> / ←</div><div class="key"><b>S</b> / ↓</div><div class="key"><b>D</b> / →</div><div class="key wide"><b>E</b> conversar / coletar · <b>ESPAÇO</b> iniciar combate</div></div><div class="note">Encontre um slime e pressione Espaço ou Combater para iniciar uma batalha por turnos.</div></section></aside></main>
-<div class="mobile-controls" aria-label="Controles de toque"><div class="dpad"><button class="up" data-key="arrowup" aria-label="Mover para cima">▲</button><button class="left" data-key="arrowleft" aria-label="Mover para esquerda">◀</button><button class="center" data-action="interact">E</button><button class="right" data-key="arrowright" aria-label="Mover para direita">▶</button><button class="down" data-key="arrowdown" aria-label="Mover para baixo">▼</button></div><div class="mobile-actions"><button class="primary" data-action="attack">⚔ Combater</button><button data-action="interact">✧ Interagir</button><button data-action="potion">♥ Poção</button><button data-action="battle">✦ Batalha</button></div></div>
+</head>
+<body>
+<main class="game-shell">
+  <header class="game-topbar">
+    <div class="game-brand"><span class="brand-gem">✦</span><div><strong>CRÔNICAS DE LÚMEN</strong><small>A Floresta dos Sussurros</small></div></div>
+    <div class="top-status"><span class="zone-pill" id="zone">FLORESTA · 01</span><span class="level-pill">NV. <b id="level">1</b></span><span class="crystal-pill">✧ <b id="coins">12</b></span></div>
+  </header>
+  <section class="game-stage" aria-label="Mundo do jogo">
+    <canvas id="game" width="768" height="576" tabindex="0" aria-label="Use WASD ou as setas para se mover. E para interagir."></canvas>
+    <div class="stage-hint"><span class="hint-dot"></span> Explore a floresta <span class="hint-sep">·</span> aproxime-se dos monstros para lutar</div>
+  </section>
+  <section class="game-hud" aria-label="Status da personagem">
+    <div class="hud-portrait"><canvas id="portrait" width="256" height="256" aria-label="Retrato de Yuu"></canvas></div>
+    <div class="hud-main"><div class="hud-name"><strong>Yuu, Andarilha</strong><span>Maga errante</span></div>
+      <div class="hud-stat"><div><span>♥ Vitalidade</span><b id="hpText">100 / 100</b></div><div class="hud-bar"><i id="hpBar"></i></div></div>
+      <div class="hud-stat"><div><span>✧ Experiência</span><b id="xpText">0 / 30</b></div><div class="hud-bar xp"><i id="xpBar"></i></div></div>
+    </div>
+    <div class="hud-quick"><button id="potion" class="quick-potion" aria-label="Usar poção">♥ Poção (1)</button><button id="attack" class="quick-attack" aria-label="Atacar">⚔ Atacar</button></div>
+  </section>
+  <nav class="game-controls" aria-label="Controles do jogo">
+    <div class="move-pad" aria-label="Movimento">
+      <button data-key="arrowup" class="pad-up" aria-label="Mover para cima">▲</button>
+      <button data-key="arrowleft" class="pad-left" aria-label="Mover para esquerda">◀</button>
+      <button data-key="arrowdown" class="pad-down" aria-label="Mover para baixo">▼</button>
+      <button data-key="arrowright" class="pad-right" aria-label="Mover para direita">▶</button>
+    </div>
+    <div class="control-label">MOVIMENTO</div>
+    <button class="action-control" id="interactButton"><span>✧</span><b>Interagir</b><small>NPC / mercador</small></button>
+    <button class="action-control menu-control" id="rpgOpen"><span>☰</span><b>Menu</b><small>Personagem e bolsa</small></button>
+  </nav>
+</main>
+<div id="legacyState" aria-hidden="true">
+  <div id="progress">0 / 3 slimes</div><div id="questState">Explore a floresta.</div><div id="dialog">Bem-vinda à Floresta dos Sussurros.</div><div id="log"></div>
+</div>
 <div id="battle" class="battle" role="dialog" aria-modal="true" aria-label="Combate por turnos"><div class="battlebox"><div class="battlehead"><span>✦ CRÔNICAS DE LÚMEN</span><span>ENCONTRO · FLORESTA 01</span></div><div class="battlescene"><div class="battlemoon"></div><div class="battlefloor"></div><canvas id="battleHero" class="battlehero" width="256" height="256"></canvas><canvas id="battleSlime" class="battleslime" width="256" height="256"></canvas></div><div class="battlehud"><div class="battleunit"><strong>Yuu · Nv. <span id="bLevel">1</span></strong><div class="statline"><span>HP</span><span id="bHpText">100 / 100</span></div><div class="bar"><div id="bHpBar" class="fill hp" style="width:100%"></div></div><div class="statline"><span>MP</span><span id="bMpText">24 / 24</span></div><div class="bar"><div id="bMpBar" class="fill xp" style="width:100%"></div></div></div><div class="battleunit"><strong>Slime sombrio</strong><div class="statline"><span>HP</span><span id="eHpText">42 / 42</span></div><div class="bar"><div id="eHpBar" class="fill hp" style="width:100%"></div></div><div style="margin-top:7px;color:#b5c6e5">Criatura da floresta</div></div></div><div id="battlemsg" class="battlemsg">Um slime sombrio bloqueia o caminho! O que Yuu fará?</div><div class="battlebottom"><div class="battlecommands"><button id="bAttack">⚔ Atacar</button><button id="bMagic">✧ Magia · 6 MP</button><button id="bItem">♥ Poção (<span id="bPotions">1</span>)</button><button id="bEscape">↗ Fugir</button></div><div class="battleparty"><b>COMANDOS</b><br>Escolha uma ação para Yuu. O inimigo responderá após sua vez.<br><br><b>Atacar</b> causa dano físico.<br><b>Magia</b> lança um raio de luz.<br><b>Poção</b> recupera vitalidade.</div></div></div></div>
-<button class="rpg-menu-launch" id="rpgOpen">☰ MENU RPG</button>
-<div class="rpg-overlay" id="rpgMenu" role="dialog" aria-modal="true" aria-label="Menu de personagem RPG"><section class="rpg-window"><header class="rpg-titlebar"><span>✦ CRÔNICAS DE LÚMEN · MENU</span><button id="rpgClose">✕ Fechar</button></header><nav class="rpg-tabs"><button data-tab="character" class="selected">Personagem</button><button data-tab="spells">Magias</button><button data-tab="equipment">Equipamentos</button></nav><div class="rpg-content" id="rpgContent"></div><div class="rpg-toast" id="rpgToast" style="padding:0 14px 12px"></div></section></div>
-<div id="script-root"></div>
+
+<div class="rpg-overlay" id="rpgMenu" role="dialog" aria-modal="true" aria-label="Menu da personagem" aria-hidden="true">
+  <section class="rpg-window">
+    <header class="rpg-titlebar"><div><span>✦</span><div><strong>MENU DE AVENTUREIRA</strong><small>Yuu · Andarilha</small></div></div><button id="rpgClose" aria-label="Fechar menu">✕</button></header>
+    <nav class="rpg-tabs" aria-label="Abas do menu">
+      <button data-tab="character" class="selected">Personagem</button>
+      <button data-tab="consumables">Consumíveis</button>
+      <button data-tab="equipment">Equipamentos</button>
+    </nav>
+    <div class="rpg-content" id="rpgContent"></div>
+    <footer class="menu-footer"><span>ESC · Fechar menu</span><span id="rpgToast" role="status">Sua jornada começa aqui.</span></footer>
+  </section>
+</div>
 <script src="js/game.js"></script>
 <script src="js/shop.js"></script>
 <script src="js/battle.js"></script>
