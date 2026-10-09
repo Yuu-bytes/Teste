@@ -5,8 +5,8 @@ overlay.innerHTML='<section class="shop-box" role="dialog" aria-modal="true" ari
 document.body.appendChild(overlay);
 const inventory={weapon:false,armor:false,accessory:false,relic:false,potions:0,manaPotions:0,equippedWeapon:false,equippedArmor:false,equippedAccessory:false};
 const goods=[
-{id:'potion',name:'Poção de vida',price:5,desc:'Recupera 45 pontos de vida · consumível'},
-{id:'manaPotion',name:'Poção de mana',price:5,desc:'Recupera 12 pontos de mana · consumível'},
+{id:'potion',name:'Poção de vida',price:5,desc:'Recupera 60% da vida máxima · consumível'},
+{id:'manaPotion',name:'Poção de mana',price:5,desc:'Recupera 60% da mana máxima · consumível'},
 {id:'staff',name:'Arma',price:10,desc:'Arma mágica · aumenta o poder de ataque'},
 {id:'robe',name:'Armadura',price:10,desc:'Armadura · aumenta a vitalidade máxima'},
 {id:'accessory',name:'Acessório',price:15,desc:'Amuleto arcano · aumenta a mana máxima'}
