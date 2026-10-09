@@ -3,7 +3,7 @@ const overlay=document.createElement('div');
 overlay.className='shop-overlay';overlay.id='merchantShop';
 overlay.innerHTML='<section class="shop-box" role="dialog" aria-modal="true" aria-label="Loja do mercador"><div class="shop-head"><span>✦ MERCADOR DE LÚMEN</span><span>🪙 <b id="shopCoins">12</b> gold</span></div><p class="quest">“Bem-vinda, viajante. Leve o que precisar para sua jornada.”</p><div class="shop-items" id="shopItems"></div><div class="shop-footer">Poções entram nos consumíveis. Equipamentos e acessórios ficam na bolsa e podem ser equipados no menu.</div><button class="shop-close" id="shopClose">Fechar loja</button></section>';
 document.body.appendChild(overlay);
-const inventory={weapon:false,armor:false,accessory:false,potions:0,manaPotions:0,equippedWeapon:false,equippedArmor:false,equippedAccessory:false};
+const inventory={weapon:false,armor:false,accessory:false,relic:false,potions:0,manaPotions:0,equippedWeapon:false,equippedArmor:false,equippedAccessory:false};
 const goods=[
 {id:'potion',name:'Poção de vida',price:5,desc:'Recupera 45 pontos de vida · consumível'},
 {id:'manaPotion',name:'Poção de mana',price:5,desc:'Recupera 12 pontos de mana · consumível'},
