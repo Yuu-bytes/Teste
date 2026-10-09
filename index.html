@@ -23,7 +23,6 @@
       <div class="hud-stat"><div><span>♥ Vitalidade</span><b id="hpText">100 / 100</b></div><div class="hud-bar"><i id="hpBar"></i></div></div>
       <div class="hud-stat"><div><span>✧ Experiência</span><b id="xpText">0 / 30</b></div><div class="hud-bar xp"><i id="xpBar"></i></div></div>
     </div>
-    <div class="hud-quick"><button id="potion" class="quick-potion" aria-label="Usar poção">♥ Poção (1)</button><button id="attack" class="quick-attack" aria-label="Atacar">⚔ Atacar</button></div>
   </section>
   <nav class="game-controls" aria-label="Controles do jogo">
     <div class="move-pad" aria-label="Movimento">
@@ -37,7 +36,7 @@
     <button class="action-control menu-control" id="rpgOpen"><span>☰</span><b>Menu</b><small>Personagem e bolsa</small></button>
   </nav>
 </main>
-<div id="legacyState" aria-hidden="true">
+<div id="legacyState" aria-hidden="true"><button id="potion">♥ Poção (1)</button><button id="attack">Atacar</button>
   <div id="progress">0 / 3 slimes</div><div id="questState">Explore a floresta.</div><div id="dialog">Bem-vinda à Floresta dos Sussurros.</div><div id="log"></div>
 </div>
 <div id="battle" class="battle" role="dialog" aria-modal="true" aria-label="Combate por turnos"><div class="battlebox"><div class="battlehead"><span>✦ CRÔNICAS DE LÚMEN</span><span>ENCONTRO · FLORESTA 01</span></div><div class="battlescene"><div class="battlemoon"></div><div class="battlefloor"></div><canvas id="battleHero" class="battlehero" width="256" height="256"></canvas><canvas id="battleSlime" class="battleslime" width="256" height="256"></canvas></div><div class="battlehud"><div class="battleunit"><strong>Yuu · Nv. <span id="bLevel">1</span></strong><div class="statline"><span>HP</span><span id="bHpText">100 / 100</span></div><div class="bar"><div id="bHpBar" class="fill hp" style="width:100%"></div></div><div class="statline"><span>MP</span><span id="bMpText">24 / 24</span></div><div class="bar"><div id="bMpBar" class="fill xp" style="width:100%"></div></div></div><div class="battleunit"><strong>Slime sombrio</strong><div class="statline"><span>HP</span><span id="eHpText">42 / 42</span></div><div class="bar"><div id="eHpBar" class="fill hp" style="width:100%"></div></div><div style="margin-top:7px;color:#b5c6e5">Criatura da floresta</div></div></div><div id="battlemsg" class="battlemsg">Um slime sombrio bloqueia o caminho! O que Yuu fará?</div><div class="battlebottom"><div class="battlecommands"><button id="bAttack">⚔ Atacar</button><button id="bMagic">✧ Magia · 6 MP</button><button id="bItem">♥ Poção (<span id="bPotions">1</span>)</button><button id="bEscape">↗ Fugir</button></div><div class="battleparty"><b>COMANDOS</b><br>Escolha uma ação para Yuu. O inimigo responderá após sua vez.<br><br><b>Atacar</b> causa dano físico.<br><b>Magia</b> lança um raio de luz.<br><b>Poção</b> recupera vitalidade.</div></div></div></div>
