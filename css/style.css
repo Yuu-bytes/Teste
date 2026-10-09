@@ -72,3 +72,12 @@ body{display:block;min-height:100dvh;padding:0;margin:0;background:radial-gradie
 
 /* Keep combat commands visible and easy to tap. */
 #battle.open .battlecommands{display:grid!important;visibility:visible!important;opacity:1!important;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;min-width:0}#battle.open .battlecommands button{display:block!important;visibility:visible!important;min-height:46px;width:100%;white-space:normal;overflow-wrap:anywhere}#battle.open .battlecommands button small{display:block;margin-top:4px;color:#b8cbe7;font-size:9px;line-height:1.4}
+
+
+/* Combat action visibility fallback */
+#battle.open{display:grid!important;visibility:visible!important;opacity:1!important;z-index:2147483000!important;pointer-events:auto!important}
+#battle.open .battlebox{display:block!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:2147483001!important;overflow-y:auto!important}
+#battle.open .battlebottom{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)!important;position:relative!important;z-index:2147483002!important}
+#battle.open .battlecommands{display:grid!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:2147483003!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;min-height:100px!important;align-content:start!important}
+#battle.open .battlecommands button{display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;position:relative!important;z-index:2147483004!important;min-height:50px!important;width:100%!important;color:#fff!important;background:#263d63!important;border:2px solid #c2d5f5!important;font-size:12px!important}
+@media(max-width:560px){#battle.open .battlebottom{grid-template-columns:1fr!important}#battle.open .battleparty{display:none!important}}
