@@ -24,6 +24,6 @@ document.querySelectorAll('.rpg-tabs [data-tab]').forEach(b=>b.addEventListener(
 $('#rpgOpen')?.addEventListener('click',open);$('#rpgClose')?.addEventListener('click',close);
 overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close();if(e.key.toLowerCase()==='m'&&!overlay.classList.contains('open'))open()});
-$('#interactButton')?.addEventListener('click',()=>window.dispatchEvent(new KeyboardEvent('keydown',{key:'e',bubbles:true})));
+$('#interactButton')?.addEventListener('click',()=>{window.dispatchEvent(new KeyboardEvent('keydown',{key:'e',bubbles:true}));window.dispatchEvent(new KeyboardEvent('keyup',{key:'e',bubbles:true}))});
 window.lumenMenu={open,close,refresh:render};
 })();
